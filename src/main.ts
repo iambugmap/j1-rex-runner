@@ -36,18 +36,16 @@ function setupSoundToggle(button: HTMLButtonElement, sfx: ChiptuneSfx): void {
   sync()
 }
 
-function setupControlsHint(hint: HTMLElement, duckButton: HTMLButtonElement): void {
+function setupControlsHint(hint: HTMLElement): void {
   // any-pointer also catches hybrid devices (touch laptops, tablets with a trackpad).
   const isTouch = window.matchMedia('(any-pointer: coarse)').matches
-  duckButton.hidden = !isTouch
-  hint.textContent = isTouch ? 'TAP to jump · hold DUCK to duck' : 'SPACE / ↑ to jump · ↓ to duck'
+  hint.textContent = isTouch ? 'TAP to jump · SWIPE DOWN to duck' : 'SPACE / ↑ to jump · ↓ to duck'
 }
 
 function main(): void {
   const canvas = requireElement('game', HTMLCanvasElement)
   const stage = requireElement('stage', HTMLDivElement)
   const muteButton = requireElement('mute-btn', HTMLButtonElement)
-  const duckButton = requireElement('duck-btn', HTMLButtonElement)
   const hint = requireElement('hint', HTMLParagraphElement)
   const ctx = canvas.getContext('2d', { alpha: false })
   if (!ctx) throw new Error('2D canvas context unavailable')
@@ -100,18 +98,15 @@ function main(): void {
     window.addEventListener(type, unlockAudio, { capture: true, passive: true })
   }
 
-  attachInput(
-    {
-      onJumpStart: () => session.pressJump(),
-      onJumpEnd: () => session.releaseJump(),
-      onDuckStart: () => session.pressDuck(),
-      onDuckEnd: () => session.releaseDuck(),
-    },
-    duckButton,
-  )
+  attachInput({
+    onJumpStart: () => session.pressJump(),
+    onJumpEnd: () => session.releaseJump(),
+    onDuckStart: () => session.pressDuck(),
+    onDuckEnd: () => session.releaseDuck(),
+  })
 
   setupSoundToggle(muteButton, sfx)
-  setupControlsHint(hint, duckButton)
+  setupControlsHint(hint)
 
   // Never keep running while the player can't see the game.
   document.addEventListener('visibilitychange', () => {
