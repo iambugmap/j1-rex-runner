@@ -14,7 +14,7 @@ Pixel-art endless runner inspired by Chrome's offline dino game, built to run in
 |---|---|---|
 | Start / jump / restart | `Space`, `↑`, `W` | Tap anywhere |
 | Higher jump | Hold jump | Hold tap |
-| Duck / fast fall | `↓`, `S` | Hold the **DUCK** button |
+| Duck / fast fall | `↓`, `S` | Swipe down and hold |
 
 ## Development
 

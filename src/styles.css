@@ -52,8 +52,7 @@ body {
   letter-spacing: 4px;
 }
 
-.icon-btn,
-.duck-btn {
+.icon-btn {
   font: inherit;
   font-weight: 700;
   color: var(--ink);
@@ -89,22 +88,7 @@ body {
   opacity: 0.7;
 }
 
-.duck-btn {
-  align-self: flex-end;
-  width: 132px;
-  height: 64px;
-  font-size: 16px;
-  letter-spacing: 2px;
-}
-
-.duck-btn:active,
-.duck-btn.is-pressed {
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.icon-btn:focus-visible,
-.duck-btn:focus-visible {
+.icon-btn:focus-visible {
   outline: 3px dashed var(--ink);
   outline-offset: 3px;
 }
