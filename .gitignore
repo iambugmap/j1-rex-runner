@@ -1,0 +1,12 @@
+node_modules/
+dist/
+coverage/
+.DS_Store
+.bi-kit/
+*.duckdb
+*.duckdb.wal
+.env
+.env.*
+.claude/
+CLAUDE.md
+plans/templates/
